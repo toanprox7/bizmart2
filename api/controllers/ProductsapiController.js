@@ -23,6 +23,18 @@ module.exports = {
       return res.json(data)
     })
   },
+  updateRatingProducts: function (req,res,next) {
+    Productsapi.update({id:req.params.all().id})
+          .set({
+            total_star:req.params.all().total_star
+          }).exec(function (err,data) {
+            if(err){
+              console.log(err)
+            }else{
+              console.log(data);
+            }
+          })
+  }
 
 };
 

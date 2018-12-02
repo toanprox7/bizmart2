@@ -30,17 +30,17 @@ constructor(props) {
     var decoded = jwt.verify(localStorage.getItem("tokenUser"), 'toanpro');
     // console.log(decoded.dataUser);
     this.setState({
-      username:decoded.dataUser.username,
-      phone_number:decoded.dataUser.phone_number,
-      email:decoded.dataUser.email,
-      id:decoded.dataUser.id
+      username:decoded.username,
+      phone_number:decoded.phone_number,
+      email:decoded.email,
+      id:decoded.id
     });
 
 
   }
 
 componentWillReceiveProps(nextProps) {
-  console.log(nextProps,"helo");
+  // console.log(nextProps,"helo");
   this.setState({
     image:nextProps.dataImage
   });
@@ -87,6 +87,7 @@ componentWillReceiveProps(nextProps) {
          usersId:id,
          level:"1",
          status:"active",
+         total_star:0,
          categoryId:categoryInt
        }
        let self = this;

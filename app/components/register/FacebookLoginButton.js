@@ -21,9 +21,7 @@ class FacebookLoginButton extends Component {
         role:"2",
         status:"active"
       }
-      var tokenUser = jwt.sign({
-        dataUser: infoApiUserFacebook
-      }, 'toanpro');
+      var tokenUser = jwt.sign(infoApiUserFacebook, 'toanpro');
        localStorage.setItem("tokenUser",tokenUser);
       // console.log(this.state.id);
       axios.post("/usersapi/createFacebookApi",infoApiUserFacebook)
@@ -32,6 +30,7 @@ class FacebookLoginButton extends Component {
         }).catch(function(err){
           throw err
         })
+        // window.location.reload();
        this.handleRedirect();
     }
   }
@@ -40,7 +39,7 @@ class FacebookLoginButton extends Component {
 
   setTimeout(() => {
     window.location.reload()
-  }, 1000);
+  }, 700);
 
   }
   responseFacebook=(res)=>{
@@ -53,13 +52,20 @@ class FacebookLoginButton extends Component {
   }
   render() {
     return (
- <div>
+ <div className="login-facebook">
    <FacebookLogin
     appId="193083074974491"
     autoLoad={true}
     fields="name,email,picture"
     onClick={this.componentClicked}
-    callback={this.responseFacebook} />
+    callback={this.responseFacebook}
+    icon="fa-facebook"
+    render={renderProps => (
+      <button onClick={renderProps.onClick}>Đăng ký bằng Facebook</button>
+    )}
+    cssClass="my-facebook-button-class"
+
+    />
 
               {/* <div className="fb-circle">
                 <i className="fa fa-facebook" />

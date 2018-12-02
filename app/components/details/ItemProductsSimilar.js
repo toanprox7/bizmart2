@@ -53,9 +53,9 @@ class ItemProductsSimilar extends Component {
   }
     return (
       <div className="thumbnail">
-      <Link onClick={() => window.location.reload()} to={`/details/${ChangeToSlug(this.props.data.title)}-${this.props.data.id}-${this.props.idCategory}`}><img className="img-responsive" src={`/images/upload/${this.handleLinkImage()}`} alt="image_products" /></Link>
+      <a href={`/details/${ChangeToSlug(this.props.data.title)}-${this.props.data.id}-${this.props.idCategory}`}><img className="img-responsive" src={`/images/upload/${this.handleLinkImage()}`} alt="image_products" /></a>
       <div className="caption">
-        <Link onClick={() => window.location.reload()} to={`/details/${ChangeToSlug(this.props.data.title)}-${this.props.data.id}-${this.props.data.categoryId.id}`}><h5>{this.props.data.title}</h5></Link>
+        <a href={`/details/${ChangeToSlug(this.props.data.title)}-${this.props.data.id}-${this.props.data.categoryId.id}`}><h5>{this.props.data.title}</h5></a>
         <p className="price">
           <span className="price-right"></span>
           <span><NumberFormat value={this.props.data.price} displayType={'text'} thousandSeparator={'.'} decimalSeparator={','} suffix={'đ'} /></span>
@@ -67,7 +67,7 @@ class ItemProductsSimilar extends Component {
             editing={false}
             // renderStarIcon={() => <span></span>}
             starCount={5}
-            value={this.state.rating} />
+            value={this.props.data.total_star} />
       </div>
     </div>
 

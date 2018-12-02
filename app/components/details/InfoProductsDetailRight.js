@@ -52,7 +52,7 @@ class InfoProductsDetailRight extends Component {
             editing={false}
             // renderStarIcon={() => <span></span>}
             starCount={5}
-            value={this.state.rating}
+            value={dataProduct.total_star}
         />
             {/* </div> */}
             {/* <div className="old-price">

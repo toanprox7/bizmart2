@@ -14,7 +14,7 @@ class Header extends Component {
   }
 
   componentWillMount() {
-
+console.log("hello2")
     let tokenUser = localStorage.getItem("tokenUser");
     if(tokenUser){
       if(tokenUser != ""){
@@ -24,8 +24,8 @@ class Header extends Component {
             displayHeadDropdown:"block",
             displayHeadRight:"none"
           });
-
-          self.handleDataUser(self.props.addUserLocal(decoded.dataUser));
+            // console.log(decoded);
+          self.handleDataUser(self.props.addUserLocal(decoded));
 
         });
       }else{
@@ -85,8 +85,8 @@ class Header extends Component {
 
                     <div style={{display: `${this.state.displayHeadRight}`}} className="across-right-top">
                       <span><i className="fa fa-user" />
-                        <Link onClick={()=> {window.location.reload()}} to="/login">Đăng nhập</Link></span>
-                      <span><Link onClick={()=> {window.location.reload()}} to="/register">Đăng kí</Link></span>
+                        <a href="/login">Đăng nhập</a></span>
+                      <span><a href="/register">Đăng kí</a></span>
                     </div>
                   </div>
                 </div>
@@ -118,13 +118,13 @@ class Header extends Component {
                     </div>
                     <div className="icon-across-header">
                       <ul>
-                        <li><NavLink to="/login">Đăng Nhập</NavLink></li>
-                        <li><NavLink to="/register">Đăng Ký</NavLink></li>
-                        <li><NavLink to="/post-new">Đăng Tin Mới</NavLink></li>
+                        <li><a to="/login">Đăng Nhập</a></li>
+                        <li><a to="/register">Đăng Ký</a></li>
+                        <li><a to="/post-new">Đăng Tin Mới</a></li>
                       </ul>
                     </div>
                     <div className="shopping-cart">
-                    <Link to="shopping-cart"><i className="fa fa-cart-arrow-down"><span>1</span></i></Link>
+                    {/* <Link to="shopping-cart"><i className="fa fa-cart-arrow-down"><span>1</span></i></Link> */}
                     </div>
                   </div>
                 </div>

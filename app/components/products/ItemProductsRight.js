@@ -55,9 +55,9 @@ handleLinkImage=() =>{
     return (
       <div className="col-xs-6 col-sm-4 col-md-4 col-lg-4">
         <div className="thumbnail">
-          <Link onClick={() => window.location.reload()} to={`/details/${ChangeToSlug(this.props.data.title)}-${this.props.data.id}-${this.props.data.categoryId}`}><img className="img-responsive" src={`/images/upload/${this.handleLinkImage()}`} alt="image_products" /></Link>
+          <a href={`/details/${ChangeToSlug(this.props.data.title)}-${this.props.data.id}-${this.props.data.categoryId}`}><img className="img-responsive" src={`/images/upload/${this.handleLinkImage()}`} alt="image_products" /></a>
           <div className="caption">
-            <Link onClick={() => window.location.reload()} to={`/details/${ChangeToSlug(this.props.data.title)}-${this.props.data.id}-${this.props.data.categoryId}`}><h5>{this.props.data.title}</h5></Link>
+            <a href={`/details/${ChangeToSlug(this.props.data.title)}-${this.props.data.id}-${this.props.data.categoryId}`}><h5>{this.props.data.title}</h5></a>
             <p className="price">
               <span className="price-right"></span>
               <span><NumberFormat thousandSeparator={true} displayType={'text'} value={this.props.data.price} /></span>
@@ -69,7 +69,7 @@ handleLinkImage=() =>{
             editing={false}
             // renderStarIcon={() => <span></span>}
             starCount={5}
-            value={this.state.rating} />
+            value={this.props.data.total_star} />
           </div>
         </div>
       </div>

@@ -7,11 +7,15 @@
 var LocalStorage = require('node-localstorage').LocalStorage;
 localStorage = new LocalStorage('./scratch');
 var jwt = require('jsonwebtoken');
+var bcrypt = require('bcryptjs');
 module.exports = {
 	create:function(req,res,next){
     Usersapi.create(req.params.all(), function (err,data) {
-      if (err) return next(err);
-      if(data) return data;
+      if(err) return res.serverError(err);
+      return res.json({
+        message:'successfully!',
+        data: data
+      })
   })
   },
   createFacebookApi:function (req,res,next) {
@@ -28,23 +32,55 @@ module.exports = {
 });
   },
   login:function(req,res,next){
-    Usersapi.findOne(req.params.all(), function (err,user) {
-      if (err) return next(err);
-      if(!user){
-        if(localStorage.getItem("tokenData")){
-          localStorage.removeItem("tokenData")
-          console.log("da xoa token vi ko ton tai user")
-        }else{
-          return console.log("Khong ton tai user");
-        }
+    if(req.params.all().phone_number){
+      Usersapi.findOne({phone_number:req.params.all().phone_number}, function (err,user) {
+        if (err) return next(err);
+        if(!user){
+          return res.json({
+            data:"err"
+          })
+        }else if(user){
+          if(bcrypt.compareSync(req.params.all().password, user.password)) {
+            // Passwords match
+            console.log("dung roi");
+            return res.json({
+              data:user
+            })
+           } else {
+             console.log("sai mat khau roi");
+             return res.json({
+              data:"err"
+            })
+           }
 
-      }else if(user){
-        console.log("ton tai",user);
-        var tokenUserData = jwt.sign({ dataUser: user }, 'toanpro');
-        localStorage.setItem("tokenData",tokenUserData);
-       return user;
-      }
-    });
+        }
+      });
+    }else if(req.params.all().email){
+      Usersapi.findOne({email:req.params.all().email}, function (err,user) {
+        if (err) return next(err);
+        if(!user){
+          return res.json({
+            data:"err"
+          })
+        }else if(user){
+          if(bcrypt.compareSync(req.params.all().password, user.password)) {
+            // Passwords match
+            console.log("dung roi");
+            return res.json({
+              data:user
+            })
+
+           } else {
+             console.log("sai mat khau roi");
+            // Passwords don't match
+            return res.json({
+              data:"err"
+            })
+           }
+
+        }
+      });
+    }
   },
   tokenUserLogin:function(req,res,next){
     if(localStorage.getItem("tokenData")){

@@ -1,5 +1,9 @@
 *{margin: 0;
 padding: 0;}
+.login-facebook {
+  text-align: center;
+  margin-bottom: 35px;
+}
 span.err-label {
   position: absolute;
   top: 15.5%;
@@ -73,7 +77,7 @@ span.err-label {
   right: 35px;
   top: 67%;
 }
-.button-reg.button-registe .button-click {
+.button-reg.button-registe button.button-click {
     color: #dc2a3a;
     width: 375px;
     height: 70px;
@@ -87,10 +91,17 @@ span.err-label {
     border: 1px solid #403f40;
     cursor: pointer;
 }
-.button-reg.button-registe .button-click:hover{
+.button-reg.button-registe button.button-click:hover{
   background: #efebeb;
-
 }
+.button-reg.button-registe button:disabled.button-click {
+  background: #cccccc;
+  color: #666666;
+  cursor:auto;
+  border: 1px solid #999999;
+}
+
+
 .button-reg-email {
     display: flex;
     justify-content: center;
@@ -174,7 +185,7 @@ span.err-label {
     padding-bottom: 20px;
 }
 
-.checkbox-reg label {
+.checkbox-reg .rule-bizmart {
     color: #dc2a3a;
     font-weight: normal;
     font-size: 20px;
@@ -193,26 +204,28 @@ span.err-label {
     align-items: center;
     margin-top: 38px;
 }
-
+.register .input-reg {
+  margin-bottom: 42px;
+}
 .register .block-register .left-register .input-reg input {
     width: 100%;
-    margin-bottom: 42px;
+    /* margin-bottom: 42px; */
     height: 45px;
     border: 1px solid #b7b7b7;
     padding-left: 20px;
 }
 
-.register .block-register .left-register .input-reg.send-code input {
+.register .block-register .left-register .input-reg .send-code input {
     display: flex;
     /* width: 90%; */
     border-right: none;
 }
 
-.register .block-register .left-register .input-reg.send-code {
+.register .block-register .left-register .input-reg .send-code {
     display: flex;
 }
 
-.register .block-register .left-register .input-reg.send-code .button-SendSms {
+.register .block-register .left-register .input-reg .send-code .button-SendSms {
     height: 45px;
     width: 20%;
     background: #dc2a3a;
@@ -226,7 +239,7 @@ span.err-label {
     /* margin: 0; */
     /* padding: 0; */
 }
-.register .block-register .left-register .input-reg.send-code .button-SendSms:hover{
+.register .block-register .left-register .input-reg .send-code .button-SendSms:hover{
   background: #ce1e2e;
 }
 .register .top-register .had-username span {

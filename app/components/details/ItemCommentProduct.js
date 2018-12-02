@@ -6,7 +6,7 @@ class ItemCommentProduct extends Component {
 
   }
   checkImage(){
-    var guess = "/images/products/small/image1.png"
+    var guess = "/images/rating/guess.jpg"
     if(this.props.dataRatingsItem.usersId){
       return this.props.dataRatingsItem.usersId.image;
     }else{
@@ -22,7 +22,7 @@ checkName(){
     }
 }
   render() {
-    console.log(this.props.dataRatingsItem,"data cmt");
+    // console.log(this.props.dataRatingsItem,"data cmt");
     return (
     <div className="item-rating">
       <div className="img-rating">

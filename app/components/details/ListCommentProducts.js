@@ -22,7 +22,7 @@ class ListCommentProducts extends Component {
     if(localStorage.getItem("tokenUser")){
       let token = localStorage.getItem("tokenUser");
       var decoded = jwt.verify(token, 'toanpro');
-      this.props.fetchUserById(decoded.dataUser.id);
+      this.props.fetchUserById(decoded.id);
     }
     var self = this;
     axios.get(`/ratingapi/getAllRatingsById?productsId=${this.props.idProduct}&skip=0&limit=10&sort=createdAt+desc`)
@@ -37,13 +37,13 @@ class ListCommentProducts extends Component {
 
 
   componentWillReceiveProps(nextProps) {
-    // console.log(nextProps,"nextProps");
+    console.log(nextProps,"nextProps");
     if(nextProps.user){
       this.setState({
         idUser:nextProps.user.id,
         image:nextProps.user.image
       });
-    }else{
+    }else if(nextProps.user.length == 0){
       this.setState({
         image:"/images/rating/guess.jpg",
         idUser:0
@@ -65,19 +65,55 @@ class ListCommentProducts extends Component {
       contentRating:value
     });
   }
-  handleButtonSend(){
+ async handleButtonSend(){
    if(this.state.rating != 0){
-    var infoRating={
+    var self=await this;
+    var infoRating=await {
       content:this.state.contentRating,
       star_item:this.state.rating,
       productsId:this.state.idProduct,
       usersId:this.state.idUser
     }
-    this.props.createRating(infoRating);
-    window.location.reload();
+    await this.props.createRating(infoRating);
+    await axios.post("/ratingapi/getAllRatingsById",{productsId:this.state.idProduct})
+    .then(function (response) {
+      var arrayToltal=[];
+      response.data.map(item => {
+        arrayToltal.push(parseInt(item.star_item));
+      })
+      return arrayToltal;
+      // console.log(arrayToltal,"get rating flow id");
+    }).then(function (total) {
+      // console.log(total,"total");
+      function getSum(total, num) {
+        return total + num;
+      }
+      var totalLength = total.length;
+      var totalStar = total.reduce(getSum);
+      var totalStarRoot = Math.ceil(totalStar/totalLength);
+      return totalStarRoot;
+    }).then(function (totalStar) {
+    //  console.log(totalStar,"total star");
+     self.setState({
+       total_star:totalStar
+     })
+    })
+    .catch(function (err) {
+      console.log(err);
+    })
+    await this.updateTotalStar();
+    await window.location.reload();
    }else if(this.state.rating == 0){
      alert("Bạn vui lòng đánh giá sao trước khi đánh giá")
    }
+  }
+
+  updateTotalStar(){
+    axios.post("/productsapi/updateRatingProducts",{total_star:this.state.total_star,id:this.state.idProduct}).then(function (response) {
+      console.log(response)
+    }).catch(function (err) {
+      return err;
+    })
   }
   checkMapData(){
 

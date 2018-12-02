@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import OwlCarousel from 'react-owl-carousel2';
 import "./js/owl/css/navOwl.css";
+import ReactImageMagnify from 'react-image-magnify';
 const options = {
     margin:10,
     loop:false,
@@ -56,13 +57,28 @@ class ImgProductsDetailsLeft extends Component {
     render() {
       const LinkImg =this.checkProducts();
       const linkImgMain = this.checkImageMain();
+      const LinkImgLarge = `/images/upload/${linkImgMain}`;
+      const LinkImgSmall = `/images/upload/small/${linkImgMain}`;
+
         return (
 <div className="img-products-zoom">
-  <div className="img-zoom-main">
+<ReactImageMagnify {...{
+    smallImage: {
+        alt: 'Wristwatch by Ted Baker London',
+        isFluidWidth: true,
+        src: LinkImgSmall
+    },
+    largeImage: {
+        src: LinkImgLarge,
+        width:1200,
+        height:1800
+    }
+}} />
+  {/* <div className="img-zoom-main">
     <a className="fancybox-thumb" rel="fancybox-thumb" href={`/images/upload/${linkImgMain}`} title="Golden Manarola (Sanjeev Deo)">
       <img className="img-responsive" id="img_01" src={`/images/upload/small/${linkImgMain}`} data-zoom-image={`/images/upload/${linkImgMain}`} />
     </a>
-  </div>
+  </div> */}
   <OwlCarousel options={options} >
     {LinkImg}
   </OwlCarousel>
