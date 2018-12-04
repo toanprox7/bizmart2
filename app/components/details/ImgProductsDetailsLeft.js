@@ -66,13 +66,15 @@ class ImgProductsDetailsLeft extends Component {
     smallImage: {
         alt: 'Wristwatch by Ted Baker London',
         isFluidWidth: true,
-        src: LinkImgSmall
+        src: LinkImgSmall,
+
     },
     largeImage: {
         src: LinkImgLarge,
         width:1500,
-        height:1000
-    }
+        height:1000,
+    },
+    style:{zIndex:13}
 }} />
   {/* <div className="img-zoom-main">
     <a className="fancybox-thumb" rel="fancybox-thumb" href={`/images/upload/${linkImgMain}`} title="Golden Manarola (Sanjeev Deo)">

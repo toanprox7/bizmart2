@@ -62,6 +62,7 @@ handleLinkImage=() =>{
               <span className="price-right"></span>
               <span><NumberFormat thousandSeparator={true} displayType={'text'} value={this.props.data.price} /></span>
             </p>
+            {/* <h2></h2>asd */}
             <StarRatingComponent
             starColor="yellow"
             emptyStarColor="#d5d5d5"

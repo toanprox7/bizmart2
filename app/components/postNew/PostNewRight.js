@@ -23,6 +23,7 @@ constructor(props) {
     dataCategory:null,
     image:[],
     category: "",
+    id:""
   }
 }
 handleChange = (category) => {
@@ -51,6 +52,7 @@ componentWillReceiveProps(nextProps) {
     email:nextProps.dataUser[0].email,
     username:nextProps.dataUser[0].username,
     phone_number:nextProps.dataUser[0].phone_number,
+    id:nextProps.dataUser[0].id
   });
   if(!nextProps.dataUser[0].phone_number || nextProps.dataUser[0].phone_number == ""){
     this.props.history.push("/update-user");

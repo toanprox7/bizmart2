@@ -37,13 +37,13 @@ class ListCommentProducts extends Component {
 
 
   componentWillReceiveProps(nextProps) {
-    console.log(nextProps,"nextProps");
-    if(nextProps.user){
+    console.log(typeof nextProps.user,"nextProps");
+    if(localStorage.getItem("tokenUser")){
       this.setState({
         idUser:nextProps.user.id,
         image:nextProps.user.image
       });
-    }else if(nextProps.user.length == 0){
+    }else{
       this.setState({
         image:"/images/rating/guess.jpg",
         idUser:0

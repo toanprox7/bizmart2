@@ -39,6 +39,7 @@ class InfoProductsDetailRight extends Component {
       const dataProduct = this.checkProducts();
      const dataPhone = this.checkPhone();
      const dataUsername = this.checkUsername();
+     console.log(dataProduct)
     //  console.log(dataUser,"data user");
         return (
         <div className="info-products-details">
