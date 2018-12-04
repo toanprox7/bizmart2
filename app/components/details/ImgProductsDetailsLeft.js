@@ -6,7 +6,7 @@ const options = {
     margin:10,
     loop:false,
     dots:false,
-    nav:true,
+    nav:false,
     responsive:{
       0:{
           items:1
@@ -70,8 +70,8 @@ class ImgProductsDetailsLeft extends Component {
     },
     largeImage: {
         src: LinkImgLarge,
-        width:1200,
-        height:1800
+        width:1500,
+        height:1000
     }
 }} />
   {/* <div className="img-zoom-main">

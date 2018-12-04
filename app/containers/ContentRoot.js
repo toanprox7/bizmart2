@@ -20,6 +20,7 @@ class ContentRoot extends Component {
                 <Route path="/" component={ConstantSecond}/>
                 <Route path="/products/*-idCategory" component={ConstantSecond}/>
                 <Route path="/post-new" component={ConstantSecond}/>
+                <Route path="/update-user" component={ConstantSecond}/>
 
             </Switch>
             </React.Fragment>

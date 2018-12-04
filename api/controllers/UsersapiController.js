@@ -89,6 +89,20 @@ module.exports = {
       return res.send("");
     }
 
+  },
+  updateInfo:function (req,res,next) {
+    Usersapi.update({ id:req.params.all().id })
+    .set({
+      email:req.params.all().email,
+      username:req.params.all().username,
+      phone_number:req.params.all().phone_number
+    }).exec(function (err,data) {
+      if(err){
+        console.log(err)
+      }else{
+        console.log(data);
+      }
+    })
   }
 };
 

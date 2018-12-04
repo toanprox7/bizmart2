@@ -52,6 +52,9 @@ class ItemProductsSimilar extends Component {
       return slug;
   }
     return (
+      <React.Fragment>
+
+
       <div className="thumbnail">
       <a href={`/details/${ChangeToSlug(this.props.data.title)}-${this.props.data.id}-${this.props.idCategory}`}><img className="img-responsive" src={`/images/upload/${this.handleLinkImage()}`} alt="image_products" /></a>
       <div className="caption">
@@ -70,7 +73,7 @@ class ItemProductsSimilar extends Component {
             value={this.props.data.total_star} />
       </div>
     </div>
-
+    </React.Fragment>
     );
   }
 }

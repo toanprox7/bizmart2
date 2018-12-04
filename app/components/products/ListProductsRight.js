@@ -16,6 +16,7 @@ class ListProductsRight extends Component {
         self.setState({
           dataCategory:res.data
         })
+        // self.props.dataProducts(res.data);
     }).catch(function (err) {
       console.log(err);
     })
@@ -44,6 +45,7 @@ class ListProductsRight extends Component {
       dataCategory:dataPaginate
     });
   }
+
   checkData(){
     if(this.state.dataCategory){
       return this.state.dataCategory.map((item,index) => {

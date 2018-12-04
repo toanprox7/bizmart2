@@ -2,7 +2,27 @@
     margin: 0;
     padding: 0;
 }
+.fancybox-thumb img {
+  /* width: 100%; */
+  height: 90px;
+  padding-top: 20px;
+}
+.thumbnail img.img-responsive {
+  padding: 7px;
+  width: 100%;
+  height: 270px;
+}
+.caption a {
+  color: #151515;
+}
 
+.caption a:hover {
+  text-decoration: none;
+}
+.caption h5 {
+  font-size: 16px;
+  margin: 0 0 5px 0;
+}
 .block-info-products-details .img-products-zoom .img-zoom-main img#img_01 {
     max-width: 96%;
 }

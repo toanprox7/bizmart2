@@ -23,7 +23,7 @@ const options = {
           items:4
       }
   },
-  autoplay:true
+  autoplay:false
 };
 
 class ListProductsSimilar extends Component {
@@ -49,8 +49,9 @@ checkData(){
       // this.checkIdCategory();
         return (
     <div className="list-similar-product">
-        <OwlCarousel ref="car" options={options} >
+        <OwlCarousel options={options} >
         {this.checkData()}
+
         </OwlCarousel>
       </div>
         );

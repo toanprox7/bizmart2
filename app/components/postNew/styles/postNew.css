@@ -1,6 +1,8 @@
 *{margin: 0;
 padding: 0;}
-
+.select-custom {
+  width: 30%;
+}
 .category-post-new .title-category-post-new h3 {
     color: white;
     font-size: 20px;
@@ -44,7 +46,7 @@ padding: 0;}
 
 .email-info-post label {
     font-size: 18px;
-    font-weight: 100;
+    font-weight: 500;
     margin-top: 24px;
 }
 
@@ -57,7 +59,7 @@ padding: 0;}
 
 .user-sell-phone-info-post label {
     font-size: 18px;
-    font-weight: 100;
+    font-weight: 500;
 }
 
 .price-info-post {
@@ -143,7 +145,7 @@ p.price-info-post.red {
 }
 
 .content-des-info-post label {
-    font-weight: 100;
+    font-weight: 500;
     font-size: 18px;
 }
 
@@ -155,7 +157,7 @@ p.price-info-post.red {
 }
 
 .title-info-post label {
-    font-weight: 100;
+    font-weight: 500;
     font-size: 18px;
 }
 
@@ -173,7 +175,7 @@ p.price-info-post.red {
 }
 @media screen and (max-width: 700px) {
   .title-info-post label {
-    font-weight: 100;
+    font-weight: 500;
     font-size: 16px;
 }
 .title-info-post input {
@@ -183,7 +185,7 @@ p.price-info-post.red {
     padding-left: 15px;
 }
 .content-des-info-post label {
-    font-weight: 100;
+    font-weight: 500;
     font-size: 16px;
 }
 .content-des-info-post textarea {
@@ -221,7 +223,7 @@ p.price-info-post.red {
 }
 .user-sell-phone-info-post label {
     font-size: 16px;
-    font-weight: 100;
+    font-weight: 500;
 }
 .email-info-post label {
     font-size: 16px !important;

@@ -14,7 +14,7 @@ class Header extends Component {
   }
 
   componentWillMount() {
-console.log("hello2")
+// console.log("hello2")
     let tokenUser = localStorage.getItem("tokenUser");
     if(tokenUser){
       if(tokenUser != ""){
@@ -24,8 +24,13 @@ console.log("hello2")
             displayHeadDropdown:"block",
             displayHeadRight:"none"
           });
+          axios.get(`/usersapi/${decoded.id}`).then(function (res) {
+            self.handleDataUser(self.props.addUserLocal(res.data));
+          }).catch(function (err) {
+            console.log(err)
+          })
             // console.log(decoded);
-          self.handleDataUser(self.props.addUserLocal(decoded));
+
 
         });
       }else{
@@ -77,9 +82,9 @@ console.log("hello2")
                       <button className="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown"><img src={image} width={25} height={25} alt="image-profile" />
                        {username} <i className="fa fa-caret-down" /></button>
                       <ul className="dropdown-menu dropdown-menu-bizmart">
-                        <li><a href="#">UpdateProfile</a></li>
+                        <li><a href="/update-user">Cập nhật thông tin</a></li>
                         <li className="divider" />
-                        <li><Link onClick={this.handleLogout} to="/">logout</Link></li>
+                        <li><Link onClick={this.handleLogout} to="/">Đăng xuất</Link></li>
                       </ul>
                     </div>
 
@@ -116,11 +121,13 @@ console.log("hello2")
                         </div>
                       </div>
                     </div>
+
                     <div className="icon-across-header">
                       <ul>
-                        <li><a to="/login">Đăng Nhập</a></li>
-                        <li><a to="/register">Đăng Ký</a></li>
-                        <li><a to="/post-new">Đăng Tin Mới</a></li>
+
+                        <li style={{display: `${this.state.displayHeadRight}`}}><a href="/login">Đăng Nhập</a></li>
+                        <li style={{display: `${this.state.displayHeadRight}`}}><a href="/register">Đăng Ký</a></li>
+                        <li><a href="/post-new">Đăng Tin Mới</a></li>
                       </ul>
                     </div>
                     <div className="shopping-cart">

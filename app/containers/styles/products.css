@@ -165,7 +165,7 @@ p.price span {
 .thumbnail .caption .rating {
     font-size: 7px;
 }
-}    
+}
 @media screen and (min-width: 992px) and (max-width: 1200px) {
     div#banner img {
     width: 100%;
